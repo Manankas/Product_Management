@@ -24,7 +24,7 @@ public class Produit {
 	private double prix;
 	
 	@ManyToOne
-	@JoinColumn(name = "cat", nullable = false)
+	@JoinColumn(name = "cat", nullable = false)  //cat est le nom de la colonne dans la table produit
 	private Categorie categorie;
 	
 	public Produit(){
