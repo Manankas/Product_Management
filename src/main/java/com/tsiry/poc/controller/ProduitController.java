@@ -48,10 +48,19 @@ public class ProduitController {
 			return  serviceProduit.getAll(page, size);	
 	}
 	
-	@RequestMapping(value="/produit/search",method=RequestMethod.GET )
-	public List<ProduitDTO> searchByDesignation(@RequestParam(name="designation" , defaultValue="") String d ,
+	@RequestMapping(value="/produit/searchByDesignation",method=RequestMethod.GET )
+	public List<ProduitDTO> searchByDesignation(@RequestParam(name="des" , defaultValue="") String des ,
 												@RequestParam(name="page" , defaultValue="0") int page ,
 												@RequestParam(name="size" , defaultValue="3")int size){
-			return  serviceProduit.searchByDesignation(d, page, size);		
+			//return  serviceProduit.searchByDesignation(d, page, size);
+			return  serviceProduit.findAllByDesignation(des,page, size);
 	}
+	
+	@RequestMapping(value="/produit/searchByCategorie",method=RequestMethod.GET )
+	public List<ProduitDTO> searchByCategorie(@RequestParam(name="cat" , defaultValue="") String cat ,
+			@RequestParam(name="page" , defaultValue="0") int page ,
+			@RequestParam(name="size" , defaultValue="3")int size){
+			return  serviceProduit.findAllByCategorie(cat,page, size);
+	}
+	
 }

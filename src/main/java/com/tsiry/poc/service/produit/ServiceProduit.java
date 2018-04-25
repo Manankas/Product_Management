@@ -130,4 +130,29 @@ public class ServiceProduit implements IServiceProduit {
 		return produits;
 	}
 
+	public List<ProduitDTO> findAllByDesignation(String designation, int page, int size) {
+		List<ProduitDTO> produits = null;
+		if (!StringUtils.isEmpty(designation)) {
+			produits = new ArrayList<>();
+			List<Produit> prods = produitRepository.findAllByDesignationLike("%"+designation+"%",new PageRequest(page, size));
+			for (Produit p : prods) {
+				produits.add(new ProduitDTO(p.getId(), p.getDesignation(), p.getPrix(), p.getCategorie().getLabel()));
+			}
+		}
+		return produits;
+	}
+	
+	public List<ProduitDTO> findAllByCategorie(String cat, int page, int size) {
+		List<ProduitDTO> produits = null;
+		if (!StringUtils.isEmpty(cat)) {
+			produits = new ArrayList<>();
+			Categorie c = categorieRepository.findByLabel(cat);
+			List<Produit> prods = produitRepository.findAllByCategorie(c,new PageRequest(page, size));
+			for (Produit p : prods) {
+				produits.add(new ProduitDTO(p.getId(), p.getDesignation(), p.getPrix(), p.getCategorie().getLabel()));
+			}
+		}
+		return produits;
+	}
 }
+

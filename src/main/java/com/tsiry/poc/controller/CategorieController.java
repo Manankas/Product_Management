@@ -3,6 +3,7 @@ package com.tsiry.poc.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +21,8 @@ public class CategorieController {
 	ServiceCategorie serviceCategorie;
 	
 	@RequestMapping(value="/categorie/add",method=RequestMethod.POST )
-	public ResponseDTO add(@RequestBody CategorieDTO c){
-		return serviceCategorie.add(c);
+	public ResponseDTO add(@RequestBody CategorieDTO c , BindingResult result){
+		return serviceCategorie.add(c , result);
 	}
 	
 	@RequestMapping(value="/categorie/delete",method=RequestMethod.DELETE )
