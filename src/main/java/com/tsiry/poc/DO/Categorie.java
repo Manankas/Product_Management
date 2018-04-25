@@ -29,6 +29,8 @@ public class Categorie {
 	private String label;
 
 	@OneToMany(mappedBy = "categorie", fetch = FetchType.LAZY, cascade = CascadeType.ALL)  // association bi-directionnelle
+	//fetch = FetchType.LAZY signifie : quand on recupere 1 categorie à partir de la base
+	// ne pas recuperer la liste de produit qui va avec,  pour l'avoir : faire un getProduits()
 	public Collection<Produit> produits;
 
 	public Categorie() {
