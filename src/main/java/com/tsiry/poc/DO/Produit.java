@@ -26,7 +26,7 @@ public class Produit {
 	private double prix;
 	
 	@ManyToOne
-	@JoinColumn(name = "cat", nullable = false)  //cat est le nom de la colonne dans la table produit
+	@JoinColumn(name = "cat", nullable = false)  //clé étrangère qui pointe vers la table categorie, cat est le nom de la colonne dans la table produit
 	private Categorie categorie;
 	
 	public Produit(){
